@@ -11,7 +11,6 @@ export default function (data) {
   getFirstLis.forEach((li) => menu.append(li));
 
   function buildTree(item, subMenuParent) {
-    // Primeiro elemento
     const li = document.createElement("li");
     li.innerHTML = `<a href="#">${item.name}</a>`;
     if (!item.parent) {
@@ -21,7 +20,6 @@ export default function (data) {
     const children = data.filter((child) => child.parent === item.id);
 
     if (children.length > 0) {
-      // Add a mouseenter to parents
       li.addEventListener("mouseenter", (event) => {
         event.stopPropagation();
         event.target.classList.toggle("open");
@@ -32,10 +30,8 @@ export default function (data) {
         event.target.classList.toggle("open");
       });
 
-      // Adiciona uma classe identificadora que tem filhos
       li.classList.add("has-children");
 
-      // Constroi os filhos
       const subMenu = document.createElement("ul");
 
       if (!subMenuParent) {
